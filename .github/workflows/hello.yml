@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Say hello
-        run: |
-          echo "Hello World!"
+        run: echo "Hello World!"
+
+      - name: Show date
+        run: date
+
+      - name: List files
+        run: ls -l
           
