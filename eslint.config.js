@@ -73,5 +73,18 @@ module.exports = [
       'no-console': 'error',
       'react/prop-types': 0
     }
+  },
+  {
+    files: ['e2e-tests/**/*.{js,jsx}', 'playwright.config.js'],
+    languageOptions: {
+      ecmaVersion: 2018,
+      sourceType: 'commonjs',
+      globals: {
+        ...globals.node
+      }
+    },
+    rules: {
+      'no-undef': 'error'
+    }
   }
 ]
