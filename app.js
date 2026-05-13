@@ -16,6 +16,7 @@ app.get('/health', (req, res) => {
 
 const start = async () => {
   await app.listen(PORT)
+  const unusedVar = 'this will break lint'
   console.log(`server started on port ${PORT}`)
 }
 
