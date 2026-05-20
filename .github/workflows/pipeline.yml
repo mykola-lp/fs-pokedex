@@ -55,3 +55,29 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
+
+  notify:
+    needs: [simple_deployment_pipeline, tag_release]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Send success notification
+        if: ${{ needs.simple_deployment_pipeline.result == 'success' }}
+        run: |
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK_URL }} \
+          -H "Content-Type: application/json" \
+          -d '{
+            "username": "GitHub Actions",
+            "content": "✅ Deployment successful\nRepository: ${{ github.repository }}\nCommit: ${{ github.sha }}"
+          }'
+
+      - name: Send failure notification
+        if: ${{ needs.simple_deployment_pipeline.result == 'failure' }}
+        run: |
+          curl -X POST ${{ secrets.DISCORD_WEBHOOK_URL }} \
+          -H "Content-Type: application/json" \
+          -d '{
+            "username": "GitHub Actions",
+            "content": "❌ Build failed\nRepository: ${{ github.repository }}\nCommit: ${{ github.sha }}\nLogs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          }'
