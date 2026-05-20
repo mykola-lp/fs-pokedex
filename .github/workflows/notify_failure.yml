@@ -2,7 +2,7 @@ name: Notify Failure
 
 on:
   workflow_run:
-    workflows: ["Build and Test", "Tag Release", "Deploy"]
+    workflows: ["Deploy"]
     types: [completed]
 
 jobs:

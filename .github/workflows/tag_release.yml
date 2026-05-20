@@ -2,7 +2,7 @@ name: Tag Release
 
 on:
   workflow_run:
-    workflows: ["Build and Test"]
+    workflows: ["Deploy"]
     types: [completed]
 
 jobs:
