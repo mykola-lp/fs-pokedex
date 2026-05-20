@@ -69,7 +69,7 @@ jobs:
           -H "Content-Type: application/json" \
           -d '{
             "username": "GitHub Actions",
-            "content": "✅ Deployment successful\nRepository: ${{ github.repository }}\nCommit: ${{ github.sha }}"
+            "content": "## ✅ Deployment successful! A new version deployed to production\n\n**Repository**\n${{ github.repository }}\n\n**Branch**\n${{ github.ref_name }}\n\n**Commit**\n`${{ github.sha }}`\n\n**Message**\n${{ github.event.head_commit.message }}\n\n**Author**\n${{ github.event.head_commit.author.name }}\n\n**Triggered by**\n${{ github.actor }}\n\n**Workflow**\n${{ github.workflow }}\n\n🔗 **Logs**\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           }'
 
       - name: Send failure notification
@@ -79,5 +79,5 @@ jobs:
           -H "Content-Type: application/json" \
           -d '{
             "username": "GitHub Actions",
-            "content": "❌ Build failed\nRepository: ${{ github.repository }}\nCommit: ${{ github.sha }}\nLogs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            "content": "## ❌ Build failed! Deployment aborted\n\n**Repository**\n${{ github.repository }}\n\n**Branch**\n${{ github.ref_name }}\n\n**Commit**\n`${{ github.sha }}`\n\n**Message**\n${{ github.event.head_commit.message }}\n\n**Author**\n${{ github.event.head_commit.author.name }}\n\n**Triggered by**\n${{ github.actor }}\n\n**Workflow**\n${{ github.workflow }}\n\n🚨 Check logs immediately:\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           }'
