@@ -2,8 +2,9 @@ name: Periodic health check
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 5 * * *'
+  # Enable this schedule when periodic checks should run automatically once per day.
+  # schedule:
+  #   - cron: '0 5 * * *'
 
 jobs:
   health_check:
