@@ -31,4 +31,8 @@ describe('<App />', () => {
     expect(screen.getByTestId('error')).toBeVisible()
   })
 
+  it('intentionally fails for Discord failure notification test', () => {
+    expect(true).toBe(false)
+  })
+
 })
