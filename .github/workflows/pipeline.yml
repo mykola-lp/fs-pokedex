@@ -63,7 +63,7 @@ jobs:
 
     steps:
       - name: Success notification
-        if: ${{ needs.simple_deployment_pipeline.result == 'success' }}
+        if: ${{ github.event_name == 'push' && needs.simple_deployment_pipeline.result == 'success' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
         uses: sarisia/actions-status-discord@v1.16.0
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
