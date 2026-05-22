@@ -31,4 +31,8 @@ describe('<App />', () => {
     expect(screen.getByTestId('error')).toBeVisible()
   })
 
+  it('intentionally fails for Discord failure notification test after splitting', () => {
+    expect(true).toBe(false)
+  })
+
 })
