@@ -1,4 +1,6 @@
-# Full Stack open CI/CD
+# CI/CD
+
+**Course:** https://courses.mooc.fi/org/uh-cs/courses/full-stack-open-containers
 
 This repository is used for the CI/CD module of the Full Stack Open course
 
